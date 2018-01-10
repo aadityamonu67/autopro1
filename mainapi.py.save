@@ -1,0 +1,107 @@
+
+from flask import Flask,jsonify
+from flask import request,abort
+import sqlite3
+import json
+import threading
+import time
+
+app = Flask(__name__)
+@app.before_first_request
+def activate_job():
+    def run_job():
+        a={}
+        while True:
+           
+            con = sqlite3.connect("AutomationPro.db")
+            con.row_factory = sqlite3.Row
+            cur = con.cursor()
+            cur.execute("select * from tboutputdvc")
+            rows = cur.fetchall();
+            
+           
+            a=json.dumps( [dict(ix) for ix in rows] ) #CREATE JSON
+            print("Checking for the connection")
+            
+            time.sleep(10)
+
+    thread = threading.Thread(target=run_job)
+    thread.start()
+
+@app.before_first_request
+def activate_job1():
+    def run_job1():
+        while True:
+            print("Checking for the connection 1")
+            time.sleep(3)
+
+    thread = threading.Thread(target=run_job1)
+    thread.start()
+
+#inserting a device
+@app.route('/api/v1.0/output_device/ins', methods = ['POST'])
+def insert_device():
+    if not request.json or not 'DVC_NAME' in request.json or not 'DVC_IPADDR' in request.json or not 'RELAY_SIZE' in request.json or not 'SOCKET_STATUS' in request.json:
+        abort(400)
+    else:
+     content = request.get_json()
+     conn = sqlite3.connect('AutomationPro.db')
+#check here wheather its ip addr exist or not if exist then update status of socket else insert
+
+     conn.execute("insert into tboutputdvc (DVC_NAME, DVC_IPADDR, RELAY_SIZE,SOCKET_STATUS) values (?, ?, ?, ?)",(content["DVC_NAME"],content["DVC_IPADDR"], content["RELAY_SIZE"],content["SOCKET_STATUS"]))
+     conn.commit()
+     conn.close()
+     print content
+     return '1'
+    
+
+#deleting a device
+@app.route('/api/v1.0/output_device/del/<int:dvc_id>', methods = ['POST'])
+def delete_device(dvc_id):
+    content = request.get_json()
+    print (content["kk"])
+    print (content["title"])
+    return 'JSON posted'
+
+#updating a device
+@app.route('/api/v1.0/output_device/upd/<int:dvc_id>', methods = ['PUT'])
+def update_device(dvc_id):
+    content = request.get_json()
+    print (content["kk"])
+    print (content["title"])
+    return 'JSON posted'
+
+#finding a device
+@app.route('/api/v1.0/output_device/find/<int:dvc_id>', methods = ['GET'])
+def find_device(dvc_id):
+    content = request.get_json()
+    print (content["kk"])
+    print (content["title"])
+    return 'JSON posted'
+
+#displaying a device
+
+@app.route('/api/v1.0/output_device/disp', methods = ['GET'])
+def display_device():
+    con = sqlite3.connect("AutomationPro.db")
+    con.row_factory = sqlite3.Row
+    cur = con.cursor()
+    cur.execute("select * from tboutputdvc")
+    rows = cur.fetchall();
+    return json.dumps( [dict(ix) for ix in rows] ) #CREATE JSON
+    #return jsonify(cur.fetchall())
+
+    return '1'
+
+@app.route("/get_sts")
+def get_sts():
+    return "1"
+
+
+
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=80)
+    
+
+

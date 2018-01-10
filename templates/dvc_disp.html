@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+   <body>
+   
+      <h1>Hello {{ name }}!</h1>
+ <table border = 1>
+         <thead>
+            <td>DEVICE NAME</td>
+            <td>IP ADDRESS</td>
+            <td>RELAY</td>
+            <td>STATUS</td>
+            <td>ACTIONS</td>
+         </thead>
+         
+         {% for row in result %}
+      
+               <td>{{row["DVC_NAME"]}}</td>
+               <td>{{row["DVC_IPADDR"]}}</td>
+               <td> {{ row["RELAY_SIZE"]}}</td>
+               <td>{{row["SOCKET_STATUS"]}}</td>
+               <td><a href="#">GO!</a></td>	
+            </tr>
+         {% endfor %}
+      </table>
+      
+   </body>
+</html>

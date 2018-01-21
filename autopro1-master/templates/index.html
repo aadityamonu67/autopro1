@@ -1,0 +1,506 @@
+<!DOCTYPE html> <html>
+    <head>
+        <meta charset="utf-8">
+  
+   <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+    	<link href="https://bootswatch.com/slate/bootstrap.min.css" rel="stylesheet" type="text/css">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+	
+        <link rel="stylesheet" href="../static/dist/css/timepicker.css">
+
+	<script src="../static/dist/js/timepicker.js"></script>
+                      
+    <script src="../static/js/justgage.js"></script>
+    <script src="../static/js/raphael-2.1.4.min.js"></script>
+    <link href="../static/css/style3.css" rel="stylesheet" />
+    
+       
+   
+        <meta name="viewport" content="width=device-width, 
+initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>AUTOMATION PRO</title>
+        <!-- Bootstrap CSS CDN -->
+        <link rel="stylesheet" 
+href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+        <!-- Our Custom CSS -->
+        
+        <!-- Scrollbar Custom CSS -->
+        <link rel="stylesheet" 
+href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+        
+    </head>
+    <body>
+        <div class="wrapper">
+            <!-- Sidebar Holder -->
+            <nav id="sidebar">
+                <div id="dismiss">
+                    <i class="glyphicon glyphicon-arrow-left"></i>
+                </div>
+                <div class="sidebar-header">
+                    <h3>AutomationPro</h3>
+                </div>
+                <ul class="list-unstyled components">
+                    <p>AutomationPro</p>
+                  <li>
+                        <a href="/">Home</a>
+                    </li>
+                    <li>
+                        <a href="/sensors">Add Sensors</a>
+                    </li>
+                     <li>
+                        <a href="/automate">Automate</a>
+                    </li>
+                    
+                     <li>
+                        <a href="/triggers">Triggers</a>
+                    </li>
+                      <li>
+                        <a href="/askme">Ask Me! </a>
+                    </li>
+
+                  <!--  <li>
+                        
+                        <a href="#pageSubmenu" data-toggle="collapse" 
+aria-expanded="false">Pages</a>
+                        <ul class="collapse list-unstyled" 
+id="pageSubmenu">
+                            <li><a href="#">Page 1</a></li>
+                            <li><a href="#">Page 2</a></li>
+                            <li><a href="#">Page 3</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Portfolo</a>
+                    </li>
+                    <li>
+                        <a href="#">Contact</a>
+                    </li>-->
+                </ul>
+              <!--  <ul class="list-unstyled CTAs">
+                    <li><a 
+href="https://bootstrapious.com/tutorial/files/sidebar.zip" 
+class="download">Download source</a></li>
+                    <li><a 
+href="https://bootstrapious.com/p/bootstrap-sidebar" 
+class="article">Back to article</a></li>
+                </ul>-->
+            </nav>
+            <!-- Page Content Holder -->
+            <div id="content">
+                <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <button type="button" id="sidebarCollapse" 
+class="btn btn-info navbar-btn">
+                                <i class="glyphicon 
+glyphicon-align-left"></i>
+                                <span>Dashboard</span>
+                            </button>
+                        </div>
+                        <div class="collapse navbar-collapse" 
+id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a href="#">Page</a></li>
+                                <li><a href="#">Page</a></li>
+                                <li><a href="#">Page</a></li>
+                                <li><a href="#">Page</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+
+
+{% if pageinfo == 1 %}
+<h2>ADD TRIGGERS</h2>
+                <hr />
+                <br />
+
+             
+<form>
+  <div class="form-group row">
+  
+  <div class="form-group row">
+    <label for="inputPassword" class="col-sm-2 col-form-label">Name of Automation</label>
+    <div class="col-sm-10">
+      <input type="password" class="form-control" id="Password3" placeholder="Enter the name of Automation">
+    </div>
+  </div></div>
+      <div class="form-group row">
+    <label for="inputPassword" class="col-sm-2 col-form-label">Select Type</label>
+    <div class="col-sm-10">
+      <select class="form-control">
+  <option>Default select</option>
+</select>
+    </div>
+  </div>
+
+    
+      <div class="form-group row">
+    <label for="inputPassword" class="col-sm-2 col-form-label">DateTime Picker</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="" placeholder="DateTime Picker">
+    </div>
+  </div>
+
+
+       <div class="form-group row">
+      <label for="inputPassword" class="col-sm-2 col-form-label">        </label>
+    <div class="col-sm-10">
+      <button class="btn btn-danger form-control">TRIGGER!</button>
+         </div>
+  </div>
+
+
+      
+</form>
+
+
+
+{% elif pageinfo == 3 %}
+                <h3>AUTOMATE YOUR DEVICE</h3><hr /><br />
+                <form id="formautomate" action = "http://localhost:5000/api/v1.0/automate_device/ins" method = "POST">
+  <div class="form-group row">
+  
+  <div class="form-group row">
+    <label for="inputPassword"  class="col-sm-2 col-form-label">Name of Automation</label>
+    <div class="col-sm-10">
+      <input type="text" name="nameofauto" class="form-control" id="nameofauto" placeholder="Enter the name of Automation">
+    </div>
+  </div>
+      <div class="form-group row">
+    <label for="inputPassword" class="col-sm-2 col-form-label">Select Type</label>
+    <div class="col-sm-10">
+      <select class="form-control">
+  <option>Default select</option>
+</select>
+    </div>
+  </div>
+     <!-- ipaddr dropdown below-->
+        <div class="form-group row">
+    <label for="inputPassword" class="col-sm-2 col-form-label">Select Device</label>
+    <div class="col-sm-10">
+       
+         
+          
+            
+        
+      <select class="form-control">
+          {% for value in result %}
+          <option>{{ value["DVC_NAME"] }}</option>
+            {% endfor %}
+  <option>Default select</option>
+        
+</select>
+    </div>
+  </div>
+      <!--relay no dropdown below-->
+         <div class="form-group row">
+    <label for="inputPassword" class="col-sm-2 col-form-label">Relay No.</label>
+    <div class="col-sm-10">
+      <select class="form-control">
+  <option>Default select</option>
+</select>
+    </div>
+  </div>
+     <!-- on off status below-->
+         <div class="form-group row">
+    <label for="inputPassword" class="col-sm-2 col-form-label">Status</label>
+    <div class="col-sm-10">
+      <select class="form-control">
+  <option>Default select</option>
+</select>1
+    </div>
+  </div>
+    <div class="form-group row">
+    <label for="inputPassword"  class="col-sm-2 col-form-label">Time</label>
+    <div class="col-sm-10">
+      <input type="text"  class="form-control" name="dateofauto" id="time" placeholder="TIME OF AUTOMATION">
+    </div>
+  </div>
+
+      <script>
+          $('#time').timepicker();
+	</script>
+    
+    
+       <div class="form-group row">
+      <label for="inputPassword" class="col-sm-2 col-form-label">        </label>
+    <div class="col-sm-10">
+      <input type="submit" id="automate" value="submit" class="btn btn-danger form-control" />
+         </div>
+  </div>
+
+      </div>
+      
+</form>
+
+
+
+{% elif pageinfo == 4 %}
+                <!--<h3>ASK ME PAGE CALLED</h3>-->
+                <form action="http://localhost:5000/api/v1.0/AI/ins" method="POST">
+  <div class="form-group row">
+  
+  <div class="form-group row">
+    <label for="inputPassword" class="col-sm-2 col-form-label">       </label>
+    <div class="col-sm-10">
+      <input type="text" name="question" class="form-control" id="q" placeholder="WHAT YOU WANT?">
+    </div>
+  </div></div>
+   
+
+
+       <div class="form-group row">
+      <label for="inputPassword" class="col-sm-2 col-form-label">        </label>
+    <div class="col-sm-10">
+      <input type="submit" class="btn btn-danger form-control" value="Ask Me!" />
+
+    </div>
+  </div>
+
+
+      
+</form>
+
+
+                {% elif pageinfo == 5 %}
+<h2>ADD SENSORS</h2>
+                <hr /><br />
+                <form id="formaddsensor" action="http://localhost:5000/api/v1.0/input_device/ins" method = "POST">
+  <div class="form-group row">
+  
+  <div class="form-group row">
+    <!--<label for="inputPassword" class="col-sm-2 col-form-label"></label>-->
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="nameofsensor" name="nameofsensor" placeholder="Enter the name of Sensor">
+    </div>
+  </div></div>
+   
+
+   
+
+
+       <div class="form-group row">
+      <!--<label for="inputPassword" class="col-sm-2 col-form-label">        </label>-->
+    <div class="col-sm-10">
+      <input type="submit" value="submit" class="btn btn-danger form-control" />
+         </div>
+  </div>
+
+{% if lenrowssensor > 0 %}                
+<table class="table">
+  <thead class="thead-light">
+    <tr>
+     <th scope="col">SID</th>
+      <th scope="col">Sensor NAME</th>
+<th scope="col">Sensor Unique Identification</th>
+
+      
+    </tr>
+  </thead>
+  <tbody>
+   
+    {% for row in sensor_result %}
+                <tr>
+               <td>{{row["SID"]}}</td>
+                    <td>{{row["S_NAME"]}}</td>
+                    <td>{{row["SUID"]}}</td>
+               <td onclick="window.location.href='{{ url_for('sensors',suidd=row.SUID)}}';">Delete</td>
+                   
+            </tr>
+         {% endfor %}
+    <tr>
+    
+  </tbody> </table>
+{% else %}
+<h3>No devices nearby!</h3>
+
+
+{% endif %}
+
+      
+</form>
+
+
+{% elif pageinfo == 2 %}
+<h2>Socket view called...</h2><br/>
+<h3>IpAddress : {{ipaddr}}</h3>
+ {% for key, value in socket_data.iteritems() %}
+
+ <h3>relay{{key}}  is {% if value == 1 %}
+  on</h3>
+{% else %}
+off
+{% endif %}
+<a href="/params?ipaddr={{ipaddr}}&relay_no={{key}}&status=1">ON</a><a href="/params?ipaddr={{ipaddr}}&relay_no={{key}}&status=0">OFF</a><br/>
+
+
+            
+{% endfor %}
+ 
+  
+
+    
+
+     
+
+    
+
+{% else %}
+
+                <div class="container">
+                   
+                    <div id="g1" class="gauge" style="border:medium 1px black; float:left; width: 350px;"><h4 style="margin:0px; padding:0px;">CPU USAGE</h4></div>
+                    
+                    <div id="g2" class="gauge" style="float:left; width: 340px;"><h4 style="margin:0px; padding:0px;">RAM USAGE</h4></div>
+                    
+                     <div id="g3" class="gauge" style="float:left; width: 340px;"><h4 style="margin:0px; padding:0px;">DISK USAGE</h4></div>
+      <!--  <div id="g1" class="gauge"></div>-->
+<script>                      
+         var g1;
+document.addEventListener("DOMContentLoaded", function (event) {
+    g1 = new JustGage({
+        id: "g1",
+        value: 72,
+        min: 0,
+        max: 100,
+        donut: true,
+        gaugeWidthScale: 0.6,
+        counter: true,
+        hideInnerShadow: true
+    });
+
+    document.getElementById('g1_refresh').addEventListener('click', function () {
+        g1.refresh(getRandomInt(0, 100));
+    });
+});
+    </script>
+                    <script>
+                      var g3;
+document.addEventListener("DOMContentLoaded", function (event) {
+    g1 = new JustGage({
+        id: "g3",
+        value: 32,
+        min: 0,
+        max: 100,
+        donut: true,
+        gaugeWidthScale: 0.6,
+        counter: true,
+        hideInnerShadow: true
+    });
+
+    document.getElementById('g1_refresh').addEventListener('click', function () {
+        g1.refresh(getRandomInt(0, 100));
+    });
+});
+                        </script>
+                    <script>
+                    var g2;
+document.addEventListener("DOMContentLoaded", function (event) {
+    g1 = new JustGage({
+        id: "g2",
+        value: 90,
+        min: 0,
+        max: 100,
+        donut: true,
+        gaugeWidthScale: 0.6,
+        counter: true,
+        hideInnerShadow: true
+    });
+
+    document.getElementById('g1_refresh').addEventListener('click', function () {
+        g1.refresh(getRandomInt(0, 100));
+    });
+});
+                   </script>
+     
+    </div>
+
+
+                <h2>Connected Devices!</h2>
+
+{% if lenrows > 0 %}                
+<table class="table">
+  <thead class="thead-light">
+    <tr>
+     
+      <th scope="col">DEVICE NAME</th>
+      <th scope="col">IP ADDRESS</th>
+      <th scope="col">RELAY</th>
+<th scope="col">STATUS</th>
+<th scope="col">ACTIONS</th>
+
+    </tr>
+  </thead>
+  <tbody>
+   
+    {% for row in result %}
+                <tr>
+               <td>{{row["DVC_NAME"]}}</td>
+               <td>{{row["DVC_IPADDR"]}}</td>
+               <td> {{ row["RELAY_SIZE"]}}</td>
+               <td>{{row["SOCKET_STATUS"]}}</td>
+              
+               <td onclick="window.location.href='{{ url_for('socket_view',ipaddr=row.DVC_IPADDR)}}';">GO!</td>
+            </tr>
+         {% endfor %}
+    <tr>
+    
+  </tbody> </table>
+{% else %}
+<h3>No devices nearby!</h3>
+
+
+{% endif %}
+{% endif %}
+
+               <!-- <p>Lorem ipsum dolor sit amet, consectetur 
+adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore 
+magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco 
+laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor 
+in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla 
+pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa 
+qui officia deserunt mollit anim id est laborum.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing 
+elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi 
+ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
+reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla 
+pariatur. Excepteur sint occaecat cupidatat non proident, snt in culpa 
+qui officia deserunt mollit anim id est laborum.</p>-->
+              
+            </div>
+        </div>
+        <div class="overlay"></div>
+        <!-- jQuery CDN -->
+        <script 
+src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+        <!-- Bootstrap Js CDN -->
+        <script 
+src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <!-- jQuery Custom Scroller CDN -->
+        <script 
+src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("#sidebar").mCustomScrollbar({
+                    theme: "minimal"
+                });
+                $('#dismiss, .overlay').on('click', function () {
+                    $('#sidebar').removeClass('active');
+                    $('.overlay').fadeOut();
+                });
+                $('#sidebarCollapse').on('click', function () {
+                    $('#sidebar').addClass('active');
+                    $('.overlay').fadeIn();
+                    $('.collapse.in').toggleClass('in');
+                    $('a[aria-expanded=true]').attr('aria-expanded', 
+'false');
+                });
+            });
+        </script>
+
+
+    </body> </html>
